@@ -2,7 +2,7 @@
 {% block content %}
     <h1>Add a new film to your filmwrecs</h1>
     <section>
-        <form action="/films" method="POST">
+        <form action="/films/new" method="POST">
             <label for="title">Title</label>
             <input type="text" name="title" id="title"/>
             <label for="genre">Genre</label>
@@ -11,6 +11,12 @@
             <input type="text" name="release_date" id="release_date"/>
             <label for="run_time">Run Time</label>
             <input type="number" name="run_time" id="run_time"/>
+            <label for="user">User</label>
+            <select name="user.id">
+            {% for user in users %}
+                <option value="{{user.id}}" class="text">{{user.name}}</option>
+            {% endfor %}
+            </select>
             <input type="submit" value="Add"/>
         </form>
     </section>

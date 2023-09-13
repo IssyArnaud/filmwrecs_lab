@@ -1,9 +1,18 @@
 {% extends 'base.jinja' %}
 {% block content %}
-    <h1>Your filmwrecs</h1>
-    <ul>
-    {% for film in films  %}
-        <li>{{film.title}}, {{film.genre}}, {{film.release_date}}, {{film.run_time}}</li>
+<h1>Your filmwrecs</h1>
+<ul>
+    {% for film in films %}
+    <li>{{film.title}}, {{film.genre}}, {{film.release_date}}, {{film.run_time}},
+        {% if film.watched %}
+            &#9989;
+        {% else %}
+            <form action="films/watched/{{film.id}}" method="POST">
+                <label for="watched"></label>
+                <input type="submit" id="watched" value="Watched?" />
+            </form>
+        {% endif %}
+    </li>
     {% endfor %}
-    </ul>
+</ul>
 {% endblock content %}
