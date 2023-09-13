@@ -23,6 +23,35 @@ def watched(id):
     db.session.commit()
     return redirect ('/films')
 
+@films_blueprint.route("/films/delete/<id>", methods={"POST"})
+def delete(id):
+    film = Film.query.get(id)
+    db.session.delete(film)
+    db.session.commit()
+    return redirect ('/films')
+
+@films_blueprint.route('/films/edit/<id>')
+def edit(id):
+    film = Film.query.get(id)
+    users = User.query.all()
+    return render_template('films/edit.jinja', film=film, users=users)
+
+@films_blueprint.route('/films/edit/<id>', methods=["POST"])
+def update(id):
+    title = request.form["title"]
+    genre = request.form["genre"]
+    release_date = request.form["release_date"]
+    run_time = request.form["run_time"]
+    user_id = request.form["user.id"]
+    film = Film.query.get(id)
+    film.title = title
+    film.genre = genre
+    film.release_date = release_date
+    film.run_time = run_time
+    film.user_id = user_id
+    db.session.commit()
+    return redirect ('/films')
+
 @films_blueprint.route('/films/new')
 def new():
     users = User.query.all()
