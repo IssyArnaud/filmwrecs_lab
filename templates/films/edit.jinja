@@ -9,6 +9,11 @@
             <input type="text" name="release_date" id="release_date" value="{{film.release_date}}"/>
             <label for="run_time">Run Time</label>
             <input type="number" name="run_time" id="run_time" value="{{film.run_time}}"/>
+            <label for="watched">Watched?</label>
+            <input type="checkbox" id="watched" name="watched"
+            {% if film.watched %}
+                checked
+            {% endif %} />
             <label for="user">User</label>
             <select name="user.id">
             {% for user in users %}

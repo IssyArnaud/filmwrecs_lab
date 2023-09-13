@@ -43,12 +43,14 @@ def update(id):
     release_date = request.form["release_date"]
     run_time = request.form["run_time"]
     user_id = request.form["user.id"]
+    watched = "watched" in request.form
     film = Film.query.get(id)
     film.title = title
     film.genre = genre
     film.release_date = release_date
     film.run_time = run_time
     film.user_id = user_id
+    film.watched = watched
     db.session.commit()
     return redirect ('/films')
 
