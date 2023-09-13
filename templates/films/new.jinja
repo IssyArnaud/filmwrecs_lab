@@ -1,0 +1,17 @@
+{% extends 'base.jinja' %}
+{% block content %}
+    <h1>Add a new film to your filmwrecs</h1>
+    <section>
+        <form action="/films" method="POST">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title"/>
+            <label for="genre">Genre</label>
+            <input type="text" name="genre" id="genre"/>
+            <label for="release_date">Release Date</label>
+            <input type="text" name="release_date" id="release_date"/>
+            <label for="run_time">Run Time</label>
+            <input type="number" name="run_time" id="run_time"/>
+            <input type="submit" value="Add"/>
+        </form>
+    </section>
+{% endblock content %}
