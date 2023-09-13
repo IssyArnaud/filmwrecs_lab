@@ -9,12 +9,12 @@
         {% else %}
             <form action="films/watched/{{film.id}}" method="POST">
                 <label for="watched"></label>
-                <input type="submit" id="watched" value="Watched?"/>
+                <input class="button" type="submit" id="watched" value="Watched?"/>
             </form>
         {% endif %}
         <form action="films/delete/{{film.id}}" method="POST">
             <label for="delete"></label>
-            <input type="submit" id="delete" value="delete"/>
+            <input class="button" type="submit" id="delete" value="delete"/>
         </form>
         <a href="/films/edit/{{film.id}}">Edit</a>
     </li>
